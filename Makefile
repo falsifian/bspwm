@@ -2,8 +2,8 @@ VERCMD  ?= git describe --tags 2> /dev/null
 VERSION := $(shell $(VERCMD) || cat VERSION)
 
 CPPFLAGS += -D_POSIX_C_SOURCE=200809L -DVERSION=\"$(VERSION)\"
-CFLAGS   += -std=c99 -pedantic -Wall -Wextra -DJSMN_STRICT
-LDFLAGS  ?=
+CFLAGS   += -std=c99 -pedantic -Wall -Wextra -DJSMN_STRICT -I/usr/X11R6/include
+LDFLAGS  += -L/usr/X11R6/lib
 LDLIBS    = $(LDFLAGS) -lm -lxcb -lxcb-util -lxcb-keysyms -lxcb-icccm -lxcb-ewmh -lxcb-randr -lxcb-xinerama -lxcb-shape
 
 PREFIX    ?= /usr/local
